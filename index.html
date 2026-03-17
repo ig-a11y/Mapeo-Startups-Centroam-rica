@@ -199,6 +199,10 @@ footer{max-width:1200px;margin:0 auto;padding:40px 24px 32px;text-align:center}
     <div class="hero-tag"><div class="hero-tag-line"></div><span>Reporte Interactivo · Caricaco Summit 2026</span></div>
     <h1>Top Startups to Watch<br>de Centroamérica</h1>
     <p class="hero-by">Análisis by: <span class="o">Startuplinks</span> & <span class="t">Cuantico VP</span></p>
+    <div style="margin-top:28px">
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:14px">Con el apoyo de</p>
+      <div id="fondos-logos" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"></div>
+    </div>
   </div>
 </div>
 
@@ -695,6 +699,28 @@ function closeModal(){
 }
 function overlayClick(e){ if(e.target===document.getElementById('overlay')) closeModal(); }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+// ─── FONDOS ───────────────────────────────────────────────────────────────────
+const FONDOS = [
+  {name:"Caricaco Ventures", id:"1LKxISaLOaH-uF-FW03xomEIYxu7tx0om"},
+  {name:"Venture Do",        id:"1LW3zmjTzREunWP4-oG31IhEma1TM7gfm"},
+  {name:"Carco Ventures",    id:"1-tJUIErPvKjdOcmsGWDEEA7uNyVf0MLc"},
+  {name:"Barrilete Ventures",id:"1O_tCjtE6Dw0lySO56aLZ6FRSjtn_3_RX"},
+  {name:"Invariantes Fund",  id:"1I--6Bw35zWHk8FdcmXzLv7od28StVNUU"},
+  {name:"Cacao Capital",     id:"1fP-Sas42G2ACA2YE_g6aBhFy0ezpEGKc"},
+  {name:"Amador Holdings",   id:"1H2w8WMK5ybH1uO-mmFvl6OrA76tqLI8H"},
+  {name:"Innogen Capital",   id:"1WU4IharSiyY1LeBjuv6OzxfFC0ZCnYvf"},
+  {name:"Boost",             id:"1BpbG4Sp4lVMyMahCkyffl0tnayziHvKw"},
+  {name:"Enlaces",           id:"19tM_UfJS4VHdG-oC1Y10lR8oD1nxMqyk"},
+];
+
+document.getElementById('fondos-logos').innerHTML = FONDOS.map(f => {
+  const url = `https://drive.google.com/thumbnail?id=${f.id}&sz=w200`;
+  return `<div class="logo-pill" style="height:40px;padding:6px 12px" title="${f.name}">
+    <img src="${url}" alt="${f.name}" style="height:28px;max-width:90px;object-fit:contain"
+      onerror="this.parentElement.innerHTML='<span style=&quot;font-size:11px;font-weight:700;color:#111&quot;>${f.name}</span>'"/>
+  </div>`;
+}).join('');
 
 // ─── GATE ─────────────────────────────────────────────────────────────────────
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwONEnWfhNoeZfeiywgMCVKwcb_ip5Ej2LTu-XYo7rsnIbNLmepjGr6j42EaGdYE9qC/exec";
