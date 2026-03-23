@@ -78,6 +78,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 @media(min-width:1024px){
   .logo-pill{height:56px;padding:8px 14px}
   .list-logo .logo-pill{height:38px;padding:5px 8px}
+  .fondo-pill{height:56px!important;padding:8px 16px!important}
+  .fondo-pill img{height:38px!important;max-width:120px!important}
 }
 .card-flag{font-size:20px}
 .card-meta{display:flex;gap:6px;align-items:center;margin-bottom:10px}
@@ -720,7 +722,7 @@ const FONDOS = [
 
 document.getElementById('fondos-logos').innerHTML = FONDOS.map(f => {
   const url = `https://drive.google.com/thumbnail?id=${f.id}&sz=w200`;
-  return `<div class="logo-pill" style="height:40px;padding:6px 12px" title="${f.name}">
+  return `<div class="logo-pill fondo-pill" style="height:40px;padding:6px 12px" title="${f.name}">
     <img src="${url}" alt="${f.name}" style="height:28px;max-width:90px;object-fit:contain"
       onerror="this.parentElement.innerHTML='<span style=&quot;font-size:11px;font-weight:700;color:#111&quot;>${f.name}</span>'"/>
   </div>`;
